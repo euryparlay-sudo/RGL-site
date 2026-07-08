@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Reign of Liege</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">
+    <div class="brand-mark">RL</div>
+    <div class="brand-text">RGL ADMIN</div>
+  </a>
+</nav>
+
+<!-- LOGIN -->
+<div class="admin-login" id="loginScreen">
+  <div class="section-eyebrow">Area Terbatas</div>
+  <div class="section-title" style="margin-bottom:0;">Admin Panel</div>
+  <form id="loginForm" style="width:100%;display:flex;flex-direction:column;align-items:center;">
+    <input type="password" id="passwordInput" placeholder="Masukkan password admin" required>
+    <button type="submit" class="btn btn-primary" style="width:100%;max-width:300px;">Masuk</button>
+    <p id="loginError" style="color:var(--crimson);font-family:'Rajdhani',sans-serif;font-size:12px;margin-top:10px;"></p>
+  </form>
+  <p class="admin-warning">Password default: rgl2026 — ganti di file js/admin.js (cari ADMIN_PASSWORD) sebelum web dipublikasikan. Ini gerbang sederhana, bukan keamanan tingkat server.</p>
+</div>
+
+<!-- PANEL -->
+<div id="panelScreen" style="display:none;">
+  <div class="admin-tabs">
+    <button class="admin-tab active" data-admin-tab="members">Anggota</button>
+    <button class="admin-tab" data-admin-tab="stats">Statistik</button>
+    <button class="admin-tab" data-admin-tab="tour">Turnamen</button>
+    <button class="admin-tab" id="logoutBtn">Keluar</button>
+  </div>
+
+  <!-- ANGGOTA -->
+  <div class="admin-panel active" data-admin-panel="members">
+    <div class="admin-card">
+      <div class="admin-card-title">Kelola Anggota</div>
+      <div id="memberList"></div>
+      <button class="btn-add" onclick="addMember()">+ Tambah Anggota</button>
+      <button class="btn btn-primary btn-save" onclick="saveMemberForm()">Simpan Perubahan</button>
+    </div>
+  </div>
+
+  <!-- STATISTIK -->
+  <div class="admin-panel" data-admin-panel="stats">
+    <div class="admin-card">
+      <div class="admin-card-title">Statistik Tim (halaman Squad)</div>
+      <div class="field-group"><label>Menang - Kalah</label><input type="text" id="statWinLoss"></div>
+      <div class="field-group"><label>Win Rate</label><input type="text" id="statWinRate"></div>
+      <div class="field-group"><label>Trofi Juara</label><input type="text" id="statTrophies"></div>
+      <div class="field-group"><label>MVP Terbanyak</label><input type="text" id="statMvp"></div>
+      <button class="btn btn-primary btn-save" onclick="saveStatsForm()">Simpan Perubahan</button>
+    </div>
+
+    <div class="admin-card">
+      <div class="admin-card-title">Ringkasan "Sejak Berdiri" (halaman Home)</div>
+      <div class="field-group"><label>Jumlah Trofi</label><input type="text" id="foundedTrophies"></div>
+      <div class="field-group"><label>Jumlah Turnamen Digelar</label><input type="text" id="foundedTournaments"></div>
+      <button class="btn btn-primary btn-save" onclick="saveStatsForm()">Simpan Perubahan</button>
+    </div>
+  </div>
+
+  <!-- TURNAMEN -->
+  <div class="admin-panel" data-admin-panel="tour">
+    <div class="admin-card">
+      <div class="admin-card-title">Turnamen Sedang Berjalan</div>
+      <div class="field-group"><label>Nama Turnamen</label><input type="text" id="liveNameInput"></div>
+      <div class="field-group"><label>Format</label><input type="text" id="liveFormatInput"></div>
+      <div class="field-group"><label>Jumlah Peserta</label><input type="text" id="liveParticipantsInput"></div>
+      <div class="field-group"><label>Babak Saat Ini</label><input type="text" id="liveRoundInput"></div>
+    </div>
+
+    <div id="roundsEditor"></div>
+
+    <div class="admin-card">
+      <div class="admin-card-title">Turnamen Akan Datang</div>
+      <div class="field-group"><label>Nama Turnamen</label><input type="text" id="upNameInput"></div>
+      <div class="field-group"><label>Format</label><input type="text" id="upFormatInput"></div>
+      <div class="field-group"><label>Jumlah Peserta</label><input type="text" id="upParticipantsInput"></div>
+      <div class="field-group"><label>Tanggal Mulai</label><input type="text" id="upStartInput"></div>
+    </div>
+
+    <div class="admin-card">
+      <div class="admin-card-title">Turnamen Selesai (Terakhir)</div>
+      <div class="field-group"><label>Nama Turnamen</label><input type="text" id="doneNameInput"></div>
+      <div class="field-group"><label>Juara</label><input type="text" id="doneChampionInput"></div>
+      <div class="field-group"><label>Runner-up</label><input type="text" id="doneRunnerUpInput"></div>
+      <div class="field-group"><label>Total Peserta</label><input type="text" id="doneParticipantsInput"></div>
+    </div>
+
+    <button class="btn btn-primary btn-save" onclick="saveTourForm()">Simpan Semua Perubahan Turnamen</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

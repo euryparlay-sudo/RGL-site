@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour — Reign of Liege</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">
+    <div class="brand-mark">RL</div>
+    <div class="brand-text">REIGN OF LIEGE</div>
+  </a>
+  <button class="menu-btn" id="menuBtn">☰</button>
+</nav>
+
+<div class="nav-links" id="navLinks">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="squad.html" class="nav-link">Squad</a>
+  <a href="tour.html" class="nav-link">Tour</a>
+</div>
+
+<main>
+  <section>
+    <div class="section-eyebrow">Diselenggarakan oleh RGL</div>
+    <div class="section-title">Turnamen</div>
+
+    <div class="tab-row">
+      <button class="tab active" data-tab="live">Sedang Berjalan</button>
+      <button class="tab" data-tab="upcoming">Akan Datang</button>
+      <button class="tab" data-tab="done">Selesai</button>
+    </div>
+
+    <div class="tab-panel" data-panel="live">
+      <div class="info-card">
+        <div class="info-card-top">
+          <div class="t-name" id="liveName"></div>
+          <div class="status-badge"><span class="dot"></span> Live</div>
+        </div>
+        <div class="info-meta" id="liveMeta"></div>
+        <a href="#" class="btn-register">Daftarkan Tim ke Turnamen Berikutnya</a>
+      </div>
+
+      <div class="scroll-hint">← geser untuk lihat semua babak →</div>
+      <div class="bracket-scroll" id="bracketScroll"></div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--win-green);"></div> Menang</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--charcoal);border:1px solid var(--silver);"></div> Belum main / TBD</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--crimson);"></div> Sedang berlangsung</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="upcoming" style="display:none;">
+      <div class="info-card">
+        <div class="info-card-top">
+          <div class="t-name" id="upcomingName"></div>
+          <div class="status-badge" style="background:rgba(201,162,39,0.15);color:var(--gold);">Segera</div>
+        </div>
+        <div class="info-meta" id="upcomingMeta"></div>
+        <a href="#" class="btn-register">Daftarkan Tim Sekarang</a>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="done" style="display:none;">
+      <div class="info-card">
+        <div class="info-card-top">
+          <div class="t-name" id="doneName"></div>
+          <div class="status-badge" style="background:rgba(184,188,194,0.12);color:var(--silver);">Selesai</div>
+        </div>
+        <div class="info-meta" id="doneMeta"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand">REIGN OF LIEGE</div>
+  <div class="footer-note">© 2026 RGL Esport</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/render.js"></script>
+</body>
+</html>
